@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EAT PLAY LOVE</title>
+</head>
+<body>
+Hello
+<div id="map" style="width:500px;height:400px;"></div>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0de19a6824064a3851868dd2820265f1"></script>
+<script>
+
+
+    var container = document.getElementById('map');
+    var options = {
+        center: new kakao.maps.LatLng(33.450701, 126.570667),
+        level: 3
+    };
+
+    var map = new kakao.maps.Map(container, options);
+
+
+    var xhr = new XMLHttpRequest();
+    var url = 'http://api.kcisa.kr/openapi/API_TOU_052/request'; /*URL*/
+    var queryParams = '?' + encodeURIComponent('serviceKey') + '=' + '3b0e5b45-34a1-497e-a785-36ac7d6a3b81'; /*서비스키*/
+    queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('10'); /*세션당 요청레코드수*/
+<!--    queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('페이지수'); /*페이지수*/-->
+<!--    queryParams += '&' + encodeURIComponent('keyword') + '=' + encodeURIComponent('검색어'); /*검색어*/-->
+
+    xhr.open('GET', url + queryParams);
+    xhr.onreadystatechange = function () {
+    if (this.readyState == 4) {
+
+    console.log('status: ' + this.status);
+
+
+    };
+
+    }
+    xhr.send('');
+</script>
+</body>
+</html>
